@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-dotnet add pacakge wk.QuickEdit
+dotnet add package wk.QuickEdit
 ```
 
 ## Usage

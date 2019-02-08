@@ -20,9 +20,7 @@ namespace QuickEdit {
         [DllImport("kernel32.dll")]
         static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
 
-        internal static bool Disable() {
-            Console.WriteLine("> disable quick edit mode");
-
+        public static bool Disable() {
             IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
 
             // get current console mode

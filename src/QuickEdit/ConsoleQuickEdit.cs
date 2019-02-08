@@ -1,12 +1,10 @@
 ﻿using System;
 
-namespace QuickEdit
-{
+namespace QuickEdit {
     using System;
     using System.Runtime.InteropServices;
 
-    static class ConsoleQuickEdit
-    {
+    public static class ConsoleQuickEdit {
 
         const uint ENABLE_QUICK_EDIT = 0x0040;
 
@@ -22,16 +20,14 @@ namespace QuickEdit
         [DllImport("kernel32.dll")]
         static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
 
-        internal static bool Disable()
-        {
+        internal static bool Disable() {
             Console.WriteLine("> disable quick edit mode");
 
             IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
 
             // get current console mode
             uint consoleMode;
-            if (!GetConsoleMode(consoleHandle, out consoleMode))
-            {
+            if (!GetConsoleMode(consoleHandle, out consoleMode)) {
                 // ERROR: Unable to get console mode.
                 return false;
             }
@@ -40,8 +36,7 @@ namespace QuickEdit
             consoleMode &= ~ENABLE_QUICK_EDIT;
 
             // set the new mode
-            if (!SetConsoleMode(consoleHandle, consoleMode))
-            {
+            if (!SetConsoleMode(consoleHandle, consoleMode)) {
                 // ERROR: Unable to set console mode
                 return false;
             }

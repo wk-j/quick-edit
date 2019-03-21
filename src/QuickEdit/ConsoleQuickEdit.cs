@@ -21,6 +21,13 @@ namespace QuickEdit {
         static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
 
         public static bool Disable() {
+            if (System.Environment.OSVersion.Platform == PlatformID.Win32NT) {
+                return DisableEditMode();
+            }
+            return false;
+        }
+
+        public static bool DisableEditMode() {
             IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
 
             // get current console mode
